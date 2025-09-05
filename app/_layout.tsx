@@ -1,29 +1,50 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Platform, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { AuthProvider } from '../context/AuthContext';
+import { ThemeProvider, useTheme } from '../context/ThemeContext';
+import { useThemeColors } from '../hooks/useThemeColors';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+// Load Tailwind styles only on web (for NativeWind)
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  require('../global.css');
+}
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+// 🔄 Custom inner layout wrapper to apply dynamic dark mode class
+function ThemedLayoutWrapper() {
+  const { theme, isDark } = useTheme();
+  const colors = useThemeColors();
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
-  }
+  const backgroundColor = colors.background;
+  const statusBarStyle = isDark ? 'light' : 'dark';
+
+  // Debug theme changes
+  console.log('🎨 Layout: Theme changed to:', theme, 'isDark:', isDark, 'backgroundColor:', backgroundColor);
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      {/* Apply theme-based styling */}
+      <View style={{ flex: 1, backgroundColor }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor }} edges={['top', 'left', 'right']}>
+          <Stack screenOptions={{ headerShown: false }} />
+          <StatusBar
+            style={Platform.OS === 'android' ? statusBarStyle : 'auto'}
+            backgroundColor={Platform.OS === 'android' ? colors.background : undefined}
+          />
+        </SafeAreaView>
+      </View>
+    </SafeAreaProvider>
+  );
+}
+
+// ✅ Final Export
+export default function Layout() {
+  return (
+    <AuthProvider>
+      <ThemeProvider>
+        <ThemedLayoutWrapper />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }

@@ -1,42 +1,40 @@
 {
   "expo": {
-    "name": "fitApp",
-    "slug": "fitApp",
+    "name": "VibeLearner",
+    "slug": "vibe-learner",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "fitapp",
+    "scheme": "vibelearner",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sampath2001.vibelearner"
     },
     "android": {
+      "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "package": "com.sampath2001.vibelearner",
+      "softInputMode": "adjustResize"
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "output": "static"
     },
     "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ]
+      "expo-router"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "eb0d94a8-f3f7-4a30-97da-09fa1efc5bd3"
+      }
+    },
+    "owner": "sampath2001"
   }
 }

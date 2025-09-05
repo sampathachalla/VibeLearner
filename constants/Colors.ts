@@ -1,26 +1,26 @@
 /**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
+ * TikTok/Duolingo-inspired color system for VibeLearner app.
+ * These colors complement the main theme system defined in Theme.ts
  */
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const tintColorLight = '#00B8B0'; // Cyan for light mode
+const tintColorDark = '#00F2EA';  // Neon cyan for dark mode
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
+    text: '#121212',
+    background: '#FFFFFF',
     tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
+    icon: '#4F4F4F',
+    tabIconDefault: '#A0A0A0',
     tabIconSelected: tintColorLight,
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
+    text: '#FFFFFF',
+    background: '#121212',
     tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
+    icon: '#B3B3B3',
+    tabIconDefault: '#666666',
     tabIconSelected: tintColorDark,
   },
 };

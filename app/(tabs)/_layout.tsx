@@ -1,45 +1,38 @@
+import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { AuthGuard } from '../../components/auth/AuthGuard';
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
-  );
+    <AuthGuard requireAuth={true}>
+			<Tabs
+				screenOptions={{
+					headerShown: false,
+					tabBarActiveTintColor: '#7F8CFF',
+					tabBarStyle: { backgroundColor: '#121521', borderTopColor: '#1d2030', display: 'none', height: 0 },
+					tabBarLabelStyle: { fontSize: 12 },
+				}}
+			>
+			<Tabs.Screen
+				name="homepage"
+				options={{
+					title: 'Home',
+					tabBarIcon: ({ color, size }) => (
+						<Ionicons name="home" color={color} size={size} />
+					),
+				}}
+			/>
+					<Tabs.Screen
+						name="profile"
+						options={{
+							title: 'Profile',
+							tabBarIcon: ({ color, size }) => (
+								<Ionicons name="person" color={color} size={size} />
+							),
+						}}
+					/>
+			{/* Add more tabs here when ready */}
+		</Tabs>
+    </AuthGuard>
+	);
 }
