@@ -1,6 +1,7 @@
 import { Link, useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import {
+    Image,
     Keyboard,
     Platform,
     SafeAreaView,
@@ -112,6 +113,16 @@ export default function SignupScreen() {
       >
         {/* Branding */}
         <View style={{ alignItems: 'center', marginTop: 40, marginBottom: 40 }}>
+          <Image
+            source={require('../../assets/VibeLearnerIcon.png')}
+            style={{
+              width: 80,
+              height: 80,
+              marginBottom: 16,
+              borderRadius: 20,
+            }}
+            resizeMode="contain"
+          />
           <Text style={{ fontSize: 32, fontWeight: 'bold', color: colors.text }}>VibeLearner</Text>
           <Text style={{ fontSize: 24, fontWeight: 'bold', color: colors.text, marginTop: 6 }}>
             Create Account

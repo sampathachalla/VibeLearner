@@ -7,17 +7,25 @@
     "scheme": "vibelearner",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "icon": "./assets/VibeLearnerIcon.png",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.sampath2001.vibelearner"
+      "bundleIdentifier": "com.sampath2001.vibelearner",
+      "icon": "./assets/VibeLearnerIcon.png"
     },
     "android": {
       "edgeToEdgeEnabled": true,
+      "icon": "./assets/VibeLearnerIcon.png",
       "adaptiveIcon": {
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/VibeLearnerIcon.png",
+        "backgroundColor": "#00B8B0"
       },
       "package": "com.sampath2001.vibelearner",
-      "softInputMode": "adjustResize"
+      "softInputMode": "adjustResize",
+      "enableProguardInReleaseBuilds": true,
+      "enableR8": true,
+      "minifyEnabled": true,
+      "shrinkResources": true
     },
     "web": {
       "bundler": "metro",
