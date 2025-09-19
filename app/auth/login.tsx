@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
+    Image,
     Keyboard,
     Platform,
     SafeAreaView,
@@ -154,6 +155,16 @@ export default function LoginScreen() {
         extraScrollHeight={Platform.OS === 'ios' ? 0 : 100}
       >
         <View style={{ alignItems: 'center', marginTop: 40, marginBottom: 40 }}>
+          <Image
+            source={require('../../assets/VibeLearnerIcon.png')}
+            style={{
+              width: 80,
+              height: 80,
+              marginBottom: 16,
+              borderRadius: 16,
+            }}
+            resizeMode="contain"
+          />
           <Text style={{ fontSize: 32, fontWeight: 'bold', color: colors.text }}>VibeLearner</Text>
           <Text style={{ fontSize: 24, fontWeight: 'bold', color: colors.text, marginTop: 6 }}>
             Welcome Back

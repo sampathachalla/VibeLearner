@@ -7,6 +7,12 @@
     "scheme": "vibelearner",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "icon": "./assets/VibeLearnerIcon.png",
+    "splash": {
+      "image": "./assets/VibeLearnerIcon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.sampath2001.vibelearner"
@@ -14,6 +20,7 @@
     "android": {
       "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
+        "foregroundImage": "./assets/VibeLearnerIcon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.sampath2001.vibelearner",

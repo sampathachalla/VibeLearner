@@ -98,7 +98,7 @@ export default function ContentView({
 
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 140 + insets.bottom + kbHeight }}>
+      <ScrollView contentContainerStyle={{ padding: 16, paddingBottom: 20 }}>
         {/* Show selected chat if present */}
         {selectedChat ? (
           <View style={{ backgroundColor: colors.card, borderRadius: 10, padding: 14, marginBottom: 16, borderWidth: 1, borderColor: colors.border }}>
